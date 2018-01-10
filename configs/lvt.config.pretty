@@ -15,7 +15,7 @@ LVT output methodology:                 "2d gridspace"
 
 
 
-Analysis data sources:     "GL6 JULES"  "FLUXNET"
+Analysis data sources:     "GL6 JULES data"  "FLUXNET"
 
 
 Experiment code:                        111
@@ -56,15 +56,14 @@ LVT diagnostic file:                    lvtlog
 
 
 
-Run domain lower left lat:            30.125
-Run domain lower left lon:          -124.875
-Run domain upper right lat:           50.125
-Run domain upper right lon:          -69.875
-Run domain resolution (dx):            0.25
-Run domain resolution (dy):            0.25
+Run domain lower left lat:          -90
+Run domain lower left lon:          -180
+Run domain upper right lat:          90
+Run domain upper right lon:          180
+Run domain resolution (dx):            0.5
+Run domain resolution (dy):            0.5
 
-
-Input domain and mask data file:      /home/dvalters/Datasets/landsea.nc
+Input domain and mask data file:      /home/dvalters/Datasets/landsea_proj.nc
 
 LVT datastream attributes table::
 Qle         1  W/m2   DN   1   1 Qh        1  W/m2    DN    1  1
@@ -571,5 +570,5 @@ Compute Innovation Distribution:            1
 Compute analysis gain:                      0
 Number of state variables in the DA update: 4
 
-
+GL6 JULES data directory: /home/dvalters/Datasets/WFDEI_global_dyn.month.2d.gpp_gb.2000.1.nc 
 

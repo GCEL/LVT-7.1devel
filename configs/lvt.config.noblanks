@@ -30,7 +30,7 @@ Run domain upper right lat:             90.0
 Run domain upper right lon:             180.0
 Run domain resolution (dx):             0.5
 Run domain resolution (dy):             0.5
-Input domain and mask data file:        /home/dvalters/Datasets/landsea.nc
+Input domain and mask data file:        /home/dvalters/Datasets/landsea_proj.nc
 
 LVT datastream attributes table::
 Qle         1 1 W/m2   DN   1   1 Qh        1 1 W/m2    DN    1  1
@@ -265,4 +265,4 @@ OptUE total number of selected parameters:              1
 Compute Innovation Distribution:            1
 Compute analysis gain:                      0
 Number of state variables in the DA update: 4
-JULES data file:                         /home/dvalters/Datasets/WFDEI_global_dyn.month.2d.gpp_gb.2000.1.nc
+GL6 JULES data file:                         /home/dvalters/Datasets/WFDEI_global_dyn.month.2d.gpp_gb.2000.1.nc
