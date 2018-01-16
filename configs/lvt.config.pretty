@@ -570,5 +570,6 @@ Compute Innovation Distribution:            1
 Compute analysis gain:                      0
 Number of state variables in the DA update: 4
 
-GL6 JULES data directory: /home/dvalters/Datasets/WFDEI_global_dyn.month.2d.gpp_gb.2000.1.nc 
+GL6 JULES data directory: /disk/scratch/local/dvalters/netcdf_test/0.5-degree/JULES_WFDEI_global_dyn_ALL.nc
+#GL6 JULES data directory: /home/dvalters/Datasets/WFDEI_global_dyn.month.2d.gpp_gb.2000.1.nc 
 
