@@ -47,10 +47,10 @@ subroutine readGL6JULESObs(source)
   character*100           :: filename
   logical                 :: file_exists
   integer                 :: nid, ios
-  integer                 :: qleid, timeid, tId, xId, yId
+  integer                 :: qleid, timeid, tId, xId, yId, gppid
   integer                 :: latid, lonid
   integer                 :: nx, ny
-  real,  allocatable      :: qle(:,:,:), lat(:), lon(:)
+  real,  allocatable      :: qle(:,:,:), lat(:), lon(:), gpp(:,:,:)
   integer                 :: c,r,t,kk, tindex
   integer                 :: yr, mo, da, hr, mn, ss
   type(ESMF_Time)         :: currTime
@@ -120,11 +120,19 @@ subroutine readGL6JULESObs(source)
         ios = nf90_get_var(nid,lonid, lon)
         call LVT_verify(ios, 'Error nf90_get_var: longitude')
         
-        ios = nf90_inq_varid(nid,'latent_heat',qleid)
-        call LVT_verify(ios, 'Error nf90_inq_varid: latent_heat')
+        !ios = nf90_inq_varid(nid,'latent_heat',qleid)
+        !call LVT_verify(ios, 'Error nf90_inq_varid: latent_heat')
         
-        ios = nf90_get_var(nid,qleid, qle)
-        call LVT_verify(ios, 'Error nf90_get_var: latent_heat')
+        !ios = nf90_get_var(nid,qleid, qle)
+        !call LVT_verify(ios, 'Error nf90_get_var: latent_heat')
+
+        ! DV - ingest GPP
+        ios = nf90_inq_varid(nid,'gpp', gppid)
+        call LVT_verify(ios, 'Error nf90_inq_varid: gpp')
+        
+        ios = nf90_get_var(nid, gppid, gpp)
+        call LVT_verify(ios, 'Error nf90_get_var: gpp')
+
 
         ios = nf90_inq_varid(nid,'time',timeid)
         call LVT_verify(ios, 'Error nf90_inq_varid: time')
