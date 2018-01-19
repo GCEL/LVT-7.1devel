@@ -139,7 +139,7 @@ subroutine readGL6JULESObs(source)
         do t=1,GL6JULESobs(source)%ntimes
            do c=1,nx
               do r=1,ny
-                 call latlon_to_ij(LVT_domain%lvtproj, lat(c,r), lon(c,r),&
+                 call latlon_to_ij(LVT_domain%lvtproj, lat(r), lon(c),&
                       col,row)
                  stn_col = nint(col)
                  stn_row = nint(row)
