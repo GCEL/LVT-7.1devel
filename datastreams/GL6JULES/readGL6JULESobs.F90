@@ -40,6 +40,7 @@ subroutine readGL6JULESObs(source)
 !
 ! !REVISION HISTORY: 
 !  8 July 2015: Sujay Kumar, Initial Specification
+!  18 Jan 2018: Declan Valters, change JULES lat lon ingestion
 ! 
 !EOP
 
@@ -49,7 +50,7 @@ subroutine readGL6JULESObs(source)
   integer                 :: qleid, timeid, tId, xId, yId
   integer                 :: latid, lonid
   integer                 :: nx, ny
-  real,  allocatable      :: qle(:,:,:), lat(:,:), lon(:,:)
+  real,  allocatable      :: qle(:,:,:), lat(:), lon(:)
   integer                 :: c,r,t,kk, tindex
   integer                 :: yr, mo, da, hr, mn, ss
   type(ESMF_Time)         :: currTime
@@ -94,8 +95,8 @@ subroutine readGL6JULESObs(source)
         call LVT_verify(ios, 'Error nf90_inquire_dimension: time')
         
         allocate(qle(nx,ny,GL6JULESobs(source)%ntimes))
-        allocate(lat(nx,ny))
-        allocate(lon(nx,ny))
+        allocate(lat(ny))
+        allocate(lon(nx))
         
         if(allocated(GL6JULESobs(source)%qle_c)) then 
            deallocate(GL6JULESobs(source)%qle_c)
