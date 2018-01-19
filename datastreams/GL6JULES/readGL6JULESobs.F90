@@ -50,7 +50,7 @@ subroutine readGL6JULESObs(source)
   integer                 :: qleid, timeid, tId, xId, yId, gppid
   integer                 :: latid, lonid
   integer                 :: nx, ny
-  real,  allocatable      :: qle(:,:,:), lat(:), lon(:), gpp(:,:,:)
+  real,  allocatable      :: qle(:,:,:), lat(:), lon(:), gpp(:,:)
   integer                 :: c,r,t,kk, tindex
   integer                 :: yr, mo, da, hr, mn, ss
   type(ESMF_Time)         :: currTime
@@ -94,7 +94,8 @@ subroutine readGL6JULESObs(source)
         ios = nf90_inquire_dimension(nid,tId, len=GL6JULESobs(source)%ntimes)
         call LVT_verify(ios, 'Error nf90_inquire_dimension: time')
         
-        allocate(qle(nx,ny,GL6JULESobs(source)%ntimes))
+        !allocate(qle(nx,ny,GL6JULESobs(source)%ntimes))
+        allocate(gpp(nx,ny))
         allocate(lat(ny))
         allocate(lon(nx))
         
