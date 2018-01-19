@@ -88,7 +88,7 @@ subroutine readGL6JULESObs(source)
         call LVT_verify(ios, 'Error nf90_inquire_dimension: y')
         
         ios = nf90_inq_dimid(nid,'time',tId)
-        call LVT_verify(ios, 'Error nf90_inq_dimid: t')
+        call LVT_verify(ios, 'Error nf90_inq_dimid: t')  ! ought to say 'time'
         
         ios = nf90_inquire_dimension(nid,tId, len=GL6JULESobs(source)%ntimes)
         call LVT_verify(ios, 'Error nf90_inquire_dimension: time')
