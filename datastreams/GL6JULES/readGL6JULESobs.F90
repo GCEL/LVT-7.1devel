@@ -143,7 +143,8 @@ subroutine readGL6JULESObs(source)
         
         ios = nf90_close(nid)
         call LVT_verify(ios, 'Error in nf90_close')
-
+       
+        print *, "INGESTION of arrays complete, ntimes: ", GL6JULESobs(source)%ntimes
         !map to the LVT grid           
         do t=1,GL6JULESobs(source)%ntimes
            do c=1,nx
