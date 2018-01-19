@@ -43,6 +43,7 @@ module GL6JULES_obsMod
   type, public :: fluxnetdec
      character*100               :: odir
      real,    allocatable        :: qle_c(:,:,:)
+     real,    allocatable        :: gpp_c(:,:,:)
      real,    allocatable        :: time_val(:)
      type(ESMF_Time)             :: refTime
      integer                     :: ntimes
