@@ -99,12 +99,20 @@ subroutine readGL6JULESObs(source)
         allocate(lat(ny))
         allocate(lon(nx))
         
-        if(allocated(GL6JULESobs(source)%qle_c)) then 
-           deallocate(GL6JULESobs(source)%qle_c)
+        if(allocated(GL6JULESobs(source)%qle_c) .or. & 
+           allocated(GL6JULESobs(source)%gpp_c)) then 
            deallocate(GL6JULESobs(source)%time_val)
         endif
+        if(allocated(GL6JULESobs(source)%qle_c)) then
+           deallocate(GL6JULESobs(source)%qle_c)
+        endif
+        if(allocated(GL6JULESobs(source)%gpp_c)) then
+           deallocate(GL6JULESobs(source)%gpp_c)
+        endif
         allocate(GL6JULESobs(source)%qle_c(LVT_rc%lnc,LVT_rc%lnr,GL6JULESobs(source)%ntimes))
+        allocate(GL6JULESobs(source)%gpp_c(LVT_rc%lnc,LVT_rc%lnr,GL6JULESobs(source)%ntimes))
         allocate(GL6JULESobs(source)%time_val(GL6JULESobs(source)%ntimes))
+        GL6JULESobs(source)%qle_c = LVT_rc%udef
         GL6JULESobs(source)%qle_c = LVT_rc%udef
         GL6JULESobs(source)%time_val = LVT_rc%udef
 
@@ -153,13 +161,14 @@ subroutine readGL6JULESObs(source)
                       col,row)
                  stn_col = nint(col)
                  stn_row = nint(row)
-                 
+                 !print *, "CONVERTED LAT LON TO IJ." 
                  if(stn_col.ge.1.and.stn_col.le.LVT_rc%lnc.and.&
                       stn_row.ge.1.and.stn_row.le.LVT_rc%lnr) then 
                     !GL6JULESobs(source)%qle_c(stn_col,stn_row,t) = &
                     !     qle(c,r,t)
                     GL6JULESobs(source)%gpp_c(stn_col,stn_row,t) = &
                           gpp(c,r,t)
+                    !print *, "COPIED GPP ARRAY TO gpp_c."
                  endif
               enddo
            enddo
