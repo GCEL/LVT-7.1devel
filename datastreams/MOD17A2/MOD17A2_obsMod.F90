@@ -25,7 +25,7 @@ module MOD17A2_obsMod
 ! !FILES USED:
 !
 ! !REVISION HISTORY: 
-!  18 May 2011   Sujay Kumar  Initial Specification
+! 23 January 2018   Declan Valters   Initial Specification from MOD16A2 
 ! 
 !EOP
 !-----------------------------------------------------------------------------
@@ -38,7 +38,7 @@ module MOD17A2_obsMod
   PUBLIC :: MOD17A2obs !Object to hold MOD17A2 observation attributes
 !EOP
 
-  type, public :: mod16a2dec
+  type, public :: mod17a2dec
      character*100           :: odir
      integer                 :: nc, nr
      integer, allocatable        :: n11(:)
@@ -47,9 +47,9 @@ module MOD17A2_obsMod
      integer                 :: mo
      real                    :: gridDesc(50)
      logical                 :: startFlag
-  end type mod16a2dec
+  end type mod17a2dec
      
-  type(mod16a2dec), save :: MOD17A2Obs(2)
+  type(mod17a2dec), save :: MOD17A2Obs(2)
 
 contains
   
@@ -98,38 +98,38 @@ contains
 
     allocate(MOD17A2obs(i)%qle(LVT_rc%lnc*LVT_rc%lnr))
 
-    mod16a2obs(i)%gridDesc = 0
+    mod17a2obs(i)%gridDesc = 0
     
     cornerlat1 = max(-59.995,nint((LVT_rc%gridDesc(4)+59.995)/0.01)*0.01-59.995-2*0.01)
     cornerlon1 = max(-179.995,nint((LVt_rc%gridDesc(5)+179.995)/0.01)*0.01-179.995-2*0.01)
     cornerlat2 = min(89.995,nint((LVT_rc%gridDesc(7)+59.995)/0.01)*0.01-59.995+2*0.01)
     cornerlon2 = min(179.995,nint((LVT_rc%gridDesc(8)+179.995)/0.01)*0.01-179.995+2*0.01)
     
-    mod16a2obs(i)%nr = nint((cornerlat2-cornerlat1)/0.01)+1
-    mod16a2obs(i)%nc = nint((cornerlon2-cornerlon1)/0.01)+1
+    mod17a2obs(i)%nr = nint((cornerlat2-cornerlat1)/0.01)+1
+    mod17a2obs(i)%nc = nint((cornerlon2-cornerlon1)/0.01)+1
 
-    allocate(MOD17A2Obs(i)%n11(mod16a2obs(i)%nc*mod16a2obs(i)%nr))
+    allocate(MOD17A2Obs(i)%n11(mod17a2obs(i)%nc*mod17a2obs(i)%nr))
 
     !filling the items needed by the interpolation library
-    mod16a2obs(i)%gridDesc(1) = 0  !input is EASE grid
-    mod16a2obs(i)%gridDesc(2) = mod16a2obs(i)%nc
-    mod16a2obs(i)%gridDesc(3) = mod16a2obs(i)%nr
-    mod16a2obs(i)%gridDesc(4) = cornerlat1
-    mod16a2obs(i)%gridDesc(5) = cornerlon1
-    mod16a2obs(i)%gridDesc(7) = cornerlat2
-    mod16a2obs(i)%gridDesc(8) = cornerlon2
-    mod16a2obs(i)%gridDesc(6) = 128
-    mod16a2obs(i)%gridDesc(9) = 0.01
-    mod16a2obs(i)%gridDesc(10) = 0.01
-    mod16a2obs(i)%gridDesc(20) = 64
+    mod17a2obs(i)%gridDesc(1) = 0  !input is EASE grid
+    mod17a2obs(i)%gridDesc(2) = mod17a2obs(i)%nc
+    mod17a2obs(i)%gridDesc(3) = mod17a2obs(i)%nr
+    mod17a2obs(i)%gridDesc(4) = cornerlat1
+    mod17a2obs(i)%gridDesc(5) = cornerlon1
+    mod17a2obs(i)%gridDesc(7) = cornerlat2
+    mod17a2obs(i)%gridDesc(8) = cornerlon2
+    mod17a2obs(i)%gridDesc(6) = 128
+    mod17a2obs(i)%gridDesc(9) = 0.01
+    mod17a2obs(i)%gridDesc(10) = 0.01
+    mod17a2obs(i)%gridDesc(20) = 64
 
-    call upscaleByAveraging_input(mod16a2obs(i)%gridDesc,&
-         LVT_rc%gridDesc,mod16a2obs(i)%nc*mod16a2obs(i)%nr,&
-         LVT_rc%lnc*LVT_rc%lnr,mod16a2obs(i)%n11)
+    call upscaleByAveraging_input(mod17a2obs(i)%gridDesc,&
+         LVT_rc%gridDesc,mod17a2obs(i)%nc*mod17a2obs(i)%nr,&
+         LVT_rc%lnc*LVT_rc%lnr,mod17a2obs(i)%n11)
 
     MOD17A2obs(i)%mo = LVT_rc%mo
     MOD17A2obs(i)%yr = -1
-    mod16a2obs(i)%startFlag = .true.
+    mod17a2obs(i)%startFlag = .true.
 
     if(LVT_rc%tavgInterval.lt.2592000) then 
        write(LVT_logunit,*) '[ERR] The time averaging interval must be greater than'
