@@ -3,11 +3,11 @@
 !-------------------------END NOTICE -- DO NOT EDIT-----------------------------
 !BOP
 ! 
-! !MODULE: MOD16A2_obsMod
-! \label(MOD16A2_obsMod)
+! !MODULE: MOD17A2_obsMod
+! \label(MOD17A2_obsMod)
 !
 ! !INTERFACE:
-module MOD16A2_obsMod
+module MOD17A2_obsMod
 ! 
 ! !USES:   
   use ESMF
@@ -31,11 +31,11 @@ module MOD16A2_obsMod
 !-----------------------------------------------------------------------------
 ! !PUBLIC MEMBER FUNCTIONS:
 !-----------------------------------------------------------------------------
-  PUBLIC :: MOD16A2_obsinit !Initializes structures for reading MOD16A2 data
+  PUBLIC :: MOD17A2_obsinit !Initializes structures for reading MOD17A2 data
 !-----------------------------------------------------------------------------
 ! !PUBLIC TYPES:
 !-----------------------------------------------------------------------------
-  PUBLIC :: MOD16A2obs !Object to hold MOD16A2 observation attributes
+  PUBLIC :: MOD17A2obs !Object to hold MOD17A2 observation attributes
 !EOP
 
   type, public :: mod16a2dec
@@ -49,17 +49,17 @@ module MOD16A2_obsMod
      logical                 :: startFlag
   end type mod16a2dec
      
-  type(mod16a2dec), save :: MOD16A2Obs(2)
+  type(mod16a2dec), save :: MOD17A2Obs(2)
 
 contains
   
 !BOP
 ! 
-! !ROUTINE: MOD16A2_obsInit
-! \label{MOD16A2_obsInit}
+! !ROUTINE: MOD17A2_obsInit
+! \label{MOD17A2_obsInit}
 !
 ! !INTERFACE: 
-  subroutine MOD16A2_obsinit(i)
+  subroutine MOD17A2_obsinit(i)
 ! 
 ! !USES: 
     use LVT_coreMod,   only : LVT_rc, LVT_Config
@@ -76,8 +76,8 @@ contains
 !
 ! !DESCRIPTION: 
 !   This subroutine initializes and sets up the data structures required
-!   for reading the MOD16A2 data, including the computation of spatial 
-!   interpolation weights. The MOD16A2 data is provides in the 
+!   for reading the MOD17A2 data, including the computation of spatial 
+!   interpolation weights. The MOD17A2 data is provides in the 
 !   EASE grid projection. 
 ! 
 ! !FILES USED:
@@ -90,13 +90,13 @@ contains
     real                  :: cornerlat1, cornerlat2
     real                  :: cornerlon1, cornerlon2
 
-    call ESMF_ConfigGetAttribute(LVT_Config, MOD16A2Obs(i)%odir, &
-         label='MOD16A2 data directory: ',rc=status)
-    call LVT_verify(status, 'MOD16A2 data directory: not defined')
+    call ESMF_ConfigGetAttribute(LVT_Config, MOD17A2Obs(i)%odir, &
+         label='MOD17A2 data directory: ',rc=status)
+    call LVT_verify(status, 'MOD17A2 data directory: not defined')
 
     call LVT_update_timestep(LVT_rc, 2592000)
 
-    allocate(MOD16A2obs(i)%qle(LVT_rc%lnc*LVT_rc%lnr))
+    allocate(MOD17A2obs(i)%qle(LVT_rc%lnc*LVT_rc%lnr))
 
     mod16a2obs(i)%gridDesc = 0
     
@@ -108,7 +108,7 @@ contains
     mod16a2obs(i)%nr = nint((cornerlat2-cornerlat1)/0.01)+1
     mod16a2obs(i)%nc = nint((cornerlon2-cornerlon1)/0.01)+1
 
-    allocate(MOD16A2Obs(i)%n11(mod16a2obs(i)%nc*mod16a2obs(i)%nr))
+    allocate(MOD17A2Obs(i)%n11(mod16a2obs(i)%nc*mod16a2obs(i)%nr))
 
     !filling the items needed by the interpolation library
     mod16a2obs(i)%gridDesc(1) = 0  !input is EASE grid
@@ -127,17 +127,17 @@ contains
          LVT_rc%gridDesc,mod16a2obs(i)%nc*mod16a2obs(i)%nr,&
          LVT_rc%lnc*LVT_rc%lnr,mod16a2obs(i)%n11)
 
-    MOD16A2obs(i)%mo = LVT_rc%mo
-    MOD16A2obs(i)%yr = -1
+    MOD17A2obs(i)%mo = LVT_rc%mo
+    MOD17A2obs(i)%yr = -1
     mod16a2obs(i)%startFlag = .true.
 
     if(LVT_rc%tavgInterval.lt.2592000) then 
        write(LVT_logunit,*) '[ERR] The time averaging interval must be greater than'
-       write(LVT_logunit,*) '[ERR] equal to a month since the MOD16A2 data is monthly'
+       write(LVT_logunit,*) '[ERR] equal to a month since the MOD17A2 data is monthly'
        call LVT_endrun()
     endif
 
-  end subroutine MOD16A2_obsinit
+  end subroutine MOD17A2_obsinit
 
 
-end module MOD16A2_obsMod
+end module MOD17A2_obsMod

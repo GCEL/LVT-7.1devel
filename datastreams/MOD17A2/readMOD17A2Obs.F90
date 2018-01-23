@@ -4,11 +4,11 @@
 #include "LVT_misc.h"
 !BOP
 ! 
-! !ROUTINE: readMOD16A2Obs
-! \label{readMOD16A2Obs}
+! !ROUTINE: readMOD17A2Obs
+! \label{readMOD17A2Obs}
 !
 ! !INTERFACE: 
-subroutine readMOD16A2Obs(source)
+subroutine readMOD17A2Obs(source)
 ! 
 ! !USES:   
   use ESMF
@@ -16,7 +16,7 @@ subroutine readMOD16A2Obs(source)
   use LVT_logMod,      only : LVT_logunit, LVT_verify, &
        LVT_getNextUnitNumber, LVT_releaseUnitNumber
   use LVT_histDataMod
-  use MOD16A2_obsMod, only : MOD16A2Obs
+  use MOD17A2_obsMod, only : MOD17A2Obs
 
   implicit none
 !
@@ -28,7 +28,7 @@ subroutine readMOD16A2Obs(source)
 ! !DESCRIPTION: 
 ! 
 !  NOTES: 
-!   The MOD16A2 output is available at monthly intervals. So 
+!   The MOD17A2 output is available at monthly intervals. So 
 !   the comparisons against model data should use at least a 
 !   24 hour (1day) averaging interval. 
 ! 
@@ -80,7 +80,7 @@ subroutine readMOD16A2Obs(source)
 
      inquire(file=trim(filename),exist=file_exists) 
      if(file_exists) then 
-        write(LVT_logunit,*) '[INFO] Reading MOD16A2 LH file ',trim(filename)
+        write(LVT_logunit,*) '[INFO] Reading MOD17A2 LH file ',trim(filename)
         
         gridDesc = 0 
         gridDesc(1) = mod16a2obs(source)%gridDesc(4)
@@ -145,7 +145,7 @@ subroutine readMOD16A2Obs(source)
 
   call LVT_logSingleDataStreamVar(LVT_MOC_QLE,source,varfield,vlevel=1,units="W/m2")
   
-end subroutine readMOD16A2Obs
+end subroutine readMOD17A2Obs
 
 !BOP
 ! 
@@ -164,14 +164,14 @@ subroutine create_mod16a2_filename(odir,yr,mo,filename)
 !
 ! !DESCRIPTION:
 ! 
-! This routine creates a timestamped filename for MOD16A2_LH data files 
+! This routine creates a timestamped filename for MOD17A2_LH data files 
 ! based on the given date (year, month, day)
 !
 !  The arguments are: 
 !  \begin{description}
 !   \item[odir]      GlboSnow base directory
 !   \item[yr]        year of data
-!   \item[filename]  Name of the MOD16A2_LH file
+!   \item[filename]  Name of the MOD17A2_LH file
 ! 
 ! !FILES USED:
 !
