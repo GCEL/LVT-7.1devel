@@ -283,9 +283,6 @@ LIS DAOBS use scaled obs: 0
 
 ISCCP Tskin data directory:             ./ISCCP
 
-
-
-
 LSWG Tb observation filename:           ./_LSWG/C3VP.txt
 LSWG Tb satellite name:                 "N18_"
 LSWG Tb data format:                    1
@@ -295,17 +292,9 @@ LSWG Tb cloud mask file:                ./cloud_mask.txt
 LSWG Tb cloud mask column:              ??
 LSWG Tb cloud mask threshold(%):        75
 
-
-
 FMISWE observation directory:           ./FMI_SWE
 
-
-
-
-
 NASA AMSR-E soil moisture observation directory: ./NASA_AMSRE
-
-
 
 AMMA observation directory:             ./AMMA
 AMMA static txt file list:              amma_static_txtfiles.txt
@@ -313,21 +302,12 @@ AMMA static netcdf file list:           amma_static_ncfiles.txt
 AMMA soil moisture layer weights:       0.1875 0.1875 0.625 0.0 0.0
 AMMA soil temperature layer weights:    0.1875 0.1875 0.625 0.0 0.0
 
-
-
 SMOSREX observation filename:           ./SMOSREX/Toulouse_SMOSREX.dat
-
-
 
 MOD10A1 observation directory:          ./MOD10A1
 
-
-
-
 GRACE data directory:  ./GRACE
 GRACE configuration:   default
-
-
 
 CEOP data directory:                          ./CEOP
 CEOP station list file:
@@ -335,68 +315,36 @@ CEOP read surface meteorology data:           1
 CEOP read flux data:                          1
 CEOP read soil moisture and temperature data: 1
 
-
-
 COOP data directory:
 COOP coord file:
 COOP metadata file:
 
-
-
 GLERL hydro data directory:
 GLERL hydro lake locations file:
-
-
 
 GSOD observation directory:
 GSOD coord file:
 GSOD metadata file:
 
-
-
-
 PBOH2O observation directory:
 PBOH2O station list file:
-
-
 
 WG PBMR observation directory:
 WG PBMR site index:
 
-
-
 WG SWRC observation directory:
 WG SWRC station list file:
 
-
-
 LIS OptUE restart file:                 MCSIM.001.MCSIMrst
-
-
 LIS OptUE number of model parameters:   4
 
-
 OptUE algorithm used:                   2
-
-
 OptUE decision space attributes file:   ./GArun/noah_sm_decspace.txt
-
-
 OptUE number of iterations:             20
-
-
 OptUE compute time series:              1
-
-
 OptUE time series location file:        ./STN_LOCATIONS.DAT
-
-
 OptUE total number of parameters:              2
-
-
 OptUE total number of selected parameters:              1
-
-
 
 Compute Innovation Distribution:            1
 Compute analysis gain:                      0
