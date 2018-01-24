@@ -1,34 +1,12 @@
-
-
-
-
 LVT running mode:                       "Data intercomparison"
-
-
 Map projection of the LVT analysis:          "latlon"
-
-
 LVT output format:                      "netcdf"
-
-
 LVT output methodology:                 "2d gridspace"
-
-
-
 Analysis data sources:     "GL6 JULES data"  "MOD16A2"
-
-
 Experiment code:                        111
-
-
 Start mode:                             "coldstart"
-
-
 LVT restart output interval:            "1mo"
-
-
 LVT restart filename:                   "none"
-
 
 Starting year:                          2007
 Starting month:                           11
@@ -37,7 +15,6 @@ Starting hour:                             0
 Starting minute:                           0
 Starting second:                           0
 
-
 Ending year:                            2008
 Ending month:                              5
 Ending day:                               31
@@ -45,13 +22,8 @@ Ending hour:                               0
 Ending minute:                             0
 Ending second:                             0
 
-
 LVT clock timestep:                    "1da"
-
-
 Undefined value:                        -9999
-
-
 LVT diagnostic file:                    lvtlog
 
 Run domain lower left lat:          -90
