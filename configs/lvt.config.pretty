@@ -15,7 +15,7 @@ LVT output methodology:                 "2d gridspace"
 
 
 
-Analysis data sources:     "GL6 JULES data"  "FLUXNET"
+Analysis data sources:     "GL6 JULES data"  "MOD16A2"
 
 
 Experiment code:                        111
@@ -54,8 +54,6 @@ Undefined value:                        -9999
 
 LVT diagnostic file:                    lvtlog
 
-
-
 Run domain lower left lat:          -90
 Run domain lower left lon:          -180
 Run domain upper right lat:          90
@@ -70,101 +68,38 @@ Qle         1  W/m2   DN   1   1 Qh        1  W/m2    DN    1  1
 RootMoist   1  m3/m3   -   1   1 RootMoist 1  m3/m3   -     1  1
 :: 
 
-
 LVT surface soil layer thickness:       0.1
-
-
 LVT root zone soil layer thickness:     1.0
-
-
-
 Apply external mask:                    0
-
-
 Temporal (monthly) mask flags: 0 0 0 0 0 1 1 1 0 0 0 0
-
-
-
 External mask directory:                "none"
-
-
 Compute ensemble metrics:               0
-
-
 Compute information theory metrics:     0
-
-
 Metrics attributes file:                ./METRICS.TBL
-
-
 Observation count threshold:            50
-
-
-Temporal averaging interval:            "1da"
-
-
+Temporal averaging interval:            "1mo"
 Temporal lag in metric computations:    1da
-
-
 Spatial averaging mode:     "pixel-by-pixel"
-
-
 Regional mask file for spatial averaging: none
-
-
 Stats output directory:                 ./STATS
-
-
-Stats output interval:                  "1da"
-
-
+Stats output interval:                  "1mo"
 Apply temporal smoothing to obs: 0
-
-
 Obs temporal smoothing window half length: "2da"
-
-
 Obs temporal smoothing window interval: "1da"
-
-
-
 Time series location file:              ./TS_LOCATIONS.TXT
-
-
 Variable-based stratification:          0
-
-
 Stratification variable:                SWdown_f
-
-
 Stratification threshold:               1.0
-
-
 Confidence interval (%):                95
-
-
 External data-based stratification:     0
-
-
 Stratification attributes file:         ./strat_attribs.txt
-
-
 Seasonal cycle interval type:           "monthly"
-
-
 Seasonal cycle minimum count threshold:           10
-
-
 Average diurnal cycle minimum count threshold:    10
-
-
 Averaging window for computing mean values in anomaly calculations: monthly
-
-
 Compute only the climatology for percentiles:     0
-
-
 Scale model data prior to computing percentiles: 0
+
 Percentile scaling mean (input data) filename:
 Percentile scaling standard deviation (input data) filename:
 Percentile scaling mean (scaled data) filename:
@@ -172,29 +107,14 @@ Percentile scaling standard deviation (scaled data) filename:
 Percentile scaling start time for scaling:
 Percentile scaling end time for scaling:
 
-
 Compute only the climatology for SGWI:     0
-
-
 Compute only the climatology for SPI:     0
-
-
 Compute only the climatology for SRI:     0
-
-
 Compute only the climatology for SSWI:     0
 
-
 Starting month if a shifted year definition is used in temporal averaging: 10
-
-
-
 Time specification option for Mintime metric: doy
-
-
 Time specification option for MaxTime metric: doy
-
-
 
 LIS output analysis data class:                      "LSM"
 LIS output number of surface model types:           1
@@ -231,28 +151,18 @@ LIS output number of soil temperature layers:  4
 LIS output soil moisture layer thickness: 0.1 0.3 0.6 1.0
 LIS output soil temperature layer thickness:  0.1 0.3 0.6 1.0
 
-
-
 AGRMET data directory:                  ./AGRMET_data
 AGRMET data security class name:      U
 AGRMET data distribution class name:  C
 AGRMET data category name:            ANLYS
 AGRMET data area of data:             GLOBAL
 
-
-
-
 ALEXI data directory:                   ./ALEXI
 ALEXI data resolution (in km):  4
-
-
 
 Ameriflux observation directory:        ./AmeriFlux
 Ameriflux data level:                    Level3
 Ameriflux station list file:            ./AmeriFlux/Ameriflux_stns.txt
-
-
-
 
 ANSA snow depth observation directory:  ./SNODEP
 ANSA snow depth lower left lat:      -89.875
@@ -262,8 +172,6 @@ ANSA snow depth upper right on:      179.875
 ANSA snow depth resolution (dx):       0.25
 ANSA snow depth resolution (dy):       0.25
 
-
-
 ANSA SWE observation directory:  ./ANSA_SWE
 ANSA SWE lower left lat:      -89.875
 ANSA SWE lower left lon:     -179.875
@@ -271,8 +179,6 @@ ANSA SWE upper right lat:      89.875
 ANSA SWE upper right on:      179.875
 ANSA SWE resolution (dx):       0.25
 ANSA SWE resolution (dy):       0.25
-
-
 
 ARM observation directory:              ./ARM_SGP
 ARM site identifier name:               sgp
@@ -283,78 +189,44 @@ ARM use ECOR flux data:                 1
 ARM use SWATS data:                     1
 ARM use SMOS data:                      1
 
-
-
 ARS soil moisture observation directory: ./ARS_Watersheds
 ARS soil moisture station list file:     ./ARS_Watersheds/stnlist.dat
 
-
 CMC snow depth observation directory:   ./CMC_data
 
-
-
-
 SNODAS observation directory:           ./SNODAS
-
-
 
 CPC PCP observation directory:            ../CPC_CONUS
 CPC PCP domain type (CONUS or GLOBAL):    CONUS
 CPC PCP use real time data:               0 
 
-
-
 ESA CCI soil moisture data directory: ../ECV_sm_v2.0/
 ESA CCI soil moisture data version:   2
 
-
-
 FLUXNET data directory:                 ./FLUXNET
 
-
-
 GCOMW AMSR2 L3 soil moisture observation directory:
-
-
 
 GHCN observation directory:             ./GHCN
 GHCN station file:                      ./GHCN/ghcnd-qc-stations.txt
 
-
-
 GlobSnow data directory:                ./GlobSnow
 
-
-
 ISMN observation directory:             ./ISMN
-
-
-
 
 LPRM AMSR-E soil moisture observation directory: ./LPRM-AMSRE
 LPRM AMSR-E use raw data:                        0
 
-
-
-MOD16A2 data directory:                 ./MOD16
-
-
-
+MOD16A2 data directory:                 ./disk/scratch/local/dvalters/netcdf_test/MODIS_0.5-degree/mergedMODIS_3dim.nc
 
 MODIS LST data directory:
-
-
-
 
 NASMD observation directory:   ../TAMU_NASMD
 NASMD coord file:              ../TAMU_NASMD/nasmd_stations.txt 
 NASMD number of stations:      1289
 
-
 Naturalized streamflow observation directory: ./Naturalized_StreamFlow
 Naturalized streamflow station list file:     ./Naturalized_StreamFlow/Naturalized_stnlist.txt
-
-
 
 NLDAS2 data directory:             ./NLDAS2.VIC
 NLDAS2 land surface model:         VIC
@@ -363,91 +235,51 @@ NLDAS2 VIC soil depth1 file:       ./vic_depth1.1gd4r
 NLDAS2 VIC soil depth2 file:       ./vic_depth2.1gd4r
 NLDAS2 VIC soil depth3 file:       ./vic_depth3.1gd4r
 
-
-
 SMOPS soil moisture observation directory: ./SMOPS
 SMOPS soil moisture use ASCAT data:        1
 SMOPS soil moisture use WindSat data:      0 
 SMOPS soil moisture use SMOS data:         0 
 
-
-
 SMOS L1 TB observation directory:
-
-
 
 SMOS L2 soil moisture observation directory:
 
-
-
 SNODEP metobs directory:           ./SNODEP
-
-
 
 SNOTEL observation directory:           ./SNOTEL
 SNOTEL coord file:                      ./SNOTEL/SNOTEL_CONUS_list.txt
 
-
-
 SURFRAD observation directory:          ./SURFRAD
-
-
 
 SCAN observation directory:             ./SCAN
 SCAN number of stations:                37
 SCAN coord file:                        ./SCAN_coord.txt
 
-
-
 USGS ground water (well data) observation directory: ./USGS_GW_welldata
 USGS ground water (well data) coord file:            ./USGS_GW_welldata/Well_mdata.txt
-
 
 USGS streamflow observation directory:  ./USGS_StreamFlow
 USGS streamflow station list file:      ./USGS_StreamFlow/USGS_stnlist_nldas.txt
 
-
-
-
 UW ET data directory:                   ./UW_ET_MODIS-SRB_Monthly
 
-
-
 GIMMS NDVI data directory:                   ./GIMMS-3g/
-
-
-
 GLDAS2 data directory:                   ./GLDAS2/
 GLDAS2 data model name:                  NOAH
 
-
-
-
 MERRA2 data directory:                   ./MERRA2/
-
-
 
 ERA interim land data directory:                   ./ERA_Interim_Land/
 
-
-
 SSEBop data directory:                   ./SSEB/ETA/
 SSEBop process anomaly data:             1
-
-
 
 GRDC data directory:    ../GRDC_data
 GRDC station list file: ../GRDC_data/GRDC_stations.txt
 GRDC frequency of data:  monthly
 
-
-
 LIS DAOBS output directory:             ./DAOBS
-
-
 LIS DAOBS use scaled obs: 0
-
-
 
 ISCCP Tskin data directory:             ./ISCCP
 
@@ -570,6 +402,6 @@ Compute Innovation Distribution:            1
 Compute analysis gain:                      0
 Number of state variables in the DA update: 4
 
-GL6 JULES data directory: /disk/scratch/local/dvalters/netcdf_test/0.5-degree/JULES_WFDEI_global_dyn_ALL_timevar.nc
+GL6 JULES data directory: /disk/scratch/local/dvalters/netcdf_test/JULES_0.5-degree/JULES_WFDEI_global_dyn_ALL_timevar.nc
 #GL6 JULES data directory: /home/dvalters/Datasets/WFDEI_global_dyn.month.2d.gpp_gb.2000.1.nc 
 
