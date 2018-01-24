@@ -177,6 +177,7 @@ module LVT_pluginIndices
    character*50, public,  parameter :: LVT_GLERLobsId = "GLERL hydro data"
    character*50, public,  parameter :: LVT_GL6JULESobsId = "GL6 JULES data"
    character*50, public,  parameter :: LVT_LVTbenchmarkobsId = "LVT benchmark"
+   character*50, public,  parameter :: LVT_MOD17A2obsId = "MOD17A2"
 !-------------------------------------------------------------------------
 ! Training algorithms
 !------------------------------------------------------------------------- 
