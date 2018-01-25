@@ -115,6 +115,7 @@ contains
     use GLERL_dataMod,          only : GLERL_obsinit
     use GL6JULES_obsMod,        only : GL6JULES_obsinit
     use LVTbenchmarkOUT_obsMod, only : LVTbenchmarkOUT_obsInit
+    use JULES_obsMod,           only : JULES_obsinit
 
     external readtemplateObs
     external readLISoutput
@@ -167,6 +168,7 @@ contains
     external readSSEBopObs
     external readGRDCobs
     external readGL6JULESobs
+    external readJULESobs ! DAV new module testing
     external readGIMMS_NDVIobs
     external readLVTbenchmarkOUTobs
 
@@ -353,6 +355,11 @@ contains
          GL6JULES_obsinit)
     call registerobsread(trim(LVT_GL6JULESobsId)//char(0),&
          readGL6JULESObs)
+
+    call registerobssetup(trim(LVT_JULESobsId)//char(0), &
+         JULES_obsinit)
+    call registerobsread(trim(LVT_JULESobsId)//char(0), &
+         readJULESobs)
 
     call registerobssetup(trim(LVT_LVTbenchmarkobsId)//char(0), &
          LVTbenchmarkOUT_obsInit)
