@@ -50,9 +50,9 @@ subroutine readJULESObs(source)
   integer                 :: smcid, timeid, tId, xId, yId,soilId, gppid
   integer                 :: latid, lonid, stcId
   integer                 :: nx, ny
-  real,  allocatable      :: smc_jules(:,:,:), lat(:,:), lon(:,:)
-  real,  allocatable      :: stc_jules(:,:,:)
-  real,  allocatable      :: smc(:,:,:), stc(:,:,:), time_val(:)
+  real,  allocatable      :: lat(:,:), lon(:,:)
+  real,  allocatable      :: stc_jules(:,:,:), smc_jules(:,:,:), gpp_jules(:,:,:)
+  real,  allocatable      :: smc(:,:,:), stc(:,:,:), gpp(:,:,:), time_val(:)
   integer                 :: c,r,t,kk, tindex
   integer                 :: num_secs
   integer                 :: yr, mo, da, hr, mn, ss
