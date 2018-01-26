@@ -184,7 +184,7 @@ subroutine readJULESObs(source)
      call LVT_verify(ios, 'Error in nf90_close')
 
      !map to the LVT grid
-     do t=1,JULES_obs(source)%ntimes         
+     do t=1,JULESobs(source)%ntimes         
        do c=1,nx
           do r=1,ny
              call latlon_to_ij(LVT_domain%lvtproj, lat(r), lon(c),&
