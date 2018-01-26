@@ -158,21 +158,21 @@ subroutine readJULESObs(source)
         endif
      enddo
 !soil moisture
-     ios = nf90_inq_varid(nid,'smcl',smcid)
-     call LVT_verify(ios, 'Error nf90_inq_varid: smcl')
-
-     ios = nf90_get_var(nid,smcid, smc_jules, &
-          start=(/1,1,1,tindex/), &
-          count=(/nx,ny,nsoil,1/))
-     call LVT_verify(ios, 'Error nf90_get_var: smcl')
+!     ios = nf90_inq_varid(nid,'smcl',smcid)
+!     call LVT_verify(ios, 'Error nf90_inq_varid: smcl')
+!
+!     ios = nf90_get_var(nid,smcid, smc_jules, &
+!          start=(/1,1,1,tindex/), &
+!          count=(/nx,ny,nsoil,1/))
+!     call LVT_verify(ios, 'Error nf90_get_var: smcl')
 !soil temperature
-     ios = nf90_inq_varid(nid,'t_soil',stcid)
-     call LVT_verify(ios, 'Error nf90_inq_varid: stcl')
-
-     ios = nf90_get_var(nid,stcid, stc_jules, &
-          start=(/1,1,1,tindex/), &
-          count=(/nx,ny,nsoil,1/))
-     call LVT_verify(ios, 'Error nf90_get_var: stcl')
+!     ios = nf90_inq_varid(nid,'t_soil',stcid)
+!     call LVT_verify(ios, 'Error nf90_inq_varid: stcl')
+!
+!     ios = nf90_get_var(nid,stcid, stc_jules, &
+!          start=(/1,1,1,tindex/), &
+!          count=(/nx,ny,nsoil,1/))
+!     call LVT_verify(ios, 'Error nf90_get_var: stcl')
 !GPP
      ios = nf90_inq_varid(nid, 'gpp', gppid)
      call LVT_verify(ios, 'Error nf90_inq_varid: gpp')
@@ -198,21 +198,23 @@ subroutine readJULESObs(source)
            endif
 
 !soil moisture
-           if(stn_col.ge.1.and.stn_col.le.LVT_rc%lnc.and.&
-                stn_row.ge.1.and.stn_row.le.LVT_rc%lnr) then 
-              smc(stn_col,stn_row,:) = &
-                   smc_jules(c,r,:)
-           endif
+!           if(stn_col.ge.1.and.stn_col.le.LVT_rc%lnc.and.&
+!                stn_row.ge.1.and.stn_row.le.LVT_rc%lnr) then 
+!              smc(stn_col,stn_row,:) = &
+!                   smc_jules(c,r,:)
+!           endif
 !soil temperature
-           if(stn_col.ge.1.and.stn_col.le.LVT_rc%lnc.and.&
-                stn_row.ge.1.and.stn_row.le.LVT_rc%lnr) then 
-              stc(stn_col,stn_row,:) = &
-                   stc_jules(c,r,:)
-           endif
+!           if(stn_col.ge.1.and.stn_col.le.LVT_rc%lnc.and.&
+!                stn_row.ge.1.and.stn_row.le.LVT_rc%lnr) then 
+!              stc(stn_col,stn_row,:) = &
+!                   stc_jules(c,r,:)
+!          endif
         enddo
      enddo
 
      write(LVT_logunit,*) '[INFO] Finished reading JULES data '
+! Copying jules_var to var_ip
+! DV is this needed for gpp? gpp(lat, lon, ntimes)
      do r=1, LVT_rc%lnr
         do c=1, LVT_rc%lnc
            smc_ip(c,r) = smc(c,r,1)
