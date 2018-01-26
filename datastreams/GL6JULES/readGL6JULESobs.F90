@@ -207,13 +207,14 @@ subroutine readGL6JULESObs(source)
      write(LVT_logunit,*) '[INFO] Reading GL6JULES data '
      do r=1, LVT_rc%lnr
         do c=1, LVT_rc%lnc
-           varfield(c,r) = GL6JULESobs(source)%qle_c(c,r,tindex)
+           varfield(c,r) = GL6JULESobs(source)%gpp_c(c,r,tindex)
         enddo
      enddo
   else
      varfield = LVT_rc%udef
   endif
   call LVT_logSingleDataStreamVar(LVT_MOC_QLE,source,varfield,vlevel=1,units="W/m2")
+  call LVT_logSingleDataStreamVar(LV
   
 end subroutine readGL6JULESObs
 
