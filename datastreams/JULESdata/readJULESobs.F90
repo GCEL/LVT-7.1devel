@@ -180,6 +180,13 @@ subroutine readJULESObs(source)
                 col,row)
            stn_col = nint(col)
            stn_row = nint(row)
+! GPP
+           if(stn_col.ge.1.and.stn_col.le.LVT_rc%lnc.and.&
+                 stn_row.ge.1.and.stn_row.le.LVT_rc%lnr) then
+              gpp(stn_col,stn_row,:) = &
+                    gpp_jules(c,r,:)
+           endif
+
 !soil moisture
            if(stn_col.ge.1.and.stn_col.le.LVT_rc%lnc.and.&
                 stn_row.ge.1.and.stn_row.le.LVT_rc%lnr) then 
