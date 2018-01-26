@@ -213,8 +213,8 @@ subroutine readGL6JULESObs(source)
   else
      varfield = LVT_rc%udef
   endif
-  call LVT_logSingleDataStreamVar(LVT_MOC_QLE,source,varfield,vlevel=1,units="W/m2")
-  call LVT_logSingleDataStreamVar(LV
+  !call LVT_logSingleDataStreamVar(LVT_MOC_QLE,source,varfield,vlevel=1,units="W/m2")
+  call LVT_logSingleDataStreamVar(LVT_MOC_GPP,source,varfield,vlevel=1,units="gC/m2/month1")
   
 end subroutine readGL6JULESObs
 
