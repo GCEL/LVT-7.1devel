@@ -56,6 +56,7 @@
 ../datastreams/MODIS_LST
 ../datastreams/GLERL_HydroData
 ../datastreams/GL6JULES
+../datastreams/JULESdata
 ../datastreams/ESACCI_sm
 ../datastreams/GIMMS_NDVI
 ../datastreams/GLDAS2
