@@ -112,8 +112,8 @@ subroutine readJULESObs(source)
      allocate(stc(LVT_rc%lnc, LVT_rc%lnr,nsoil))
 
      !gpp
-     allocate(gpp(LVT_rc%lnc, LVT_rc%lnr,times))
-     allocate(gpp_jules(nx,ny,ntimes))
+     allocate(gpp(LVT_rc%lnc, LVT_rc%lnr,JULESobs(source)%ntimes))
+     allocate(gpp_jules(nx,ny,JULESobs(source)%ntimes))
      !values
      ios = nf90_inq_varid(nid,'latitude',latid)
      call LVT_verify(ios, 'Error nf90_inq_varid: latitude')
@@ -168,7 +168,7 @@ subroutine readJULESObs(source)
           count=(/nx,ny,nsoil,1/))
      call LVT_verify(ios, 'Error nf90_get_var: stcl')
 !GPP
-     ios = nf90_inq_varid(nid, 'gpp', gppid, &
+     ios = nf90_inq_varid(nid, 'gpp', gppid)
      call LVT_verify(ios, 'Error nf90_inq_varid: gpp')
 
      ios = nf90_get_var(nid, gppid, gpp_jules)
