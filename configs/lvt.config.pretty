@@ -2,7 +2,7 @@ LVT running mode:                       "Data intercomparison"
 Map projection of the LVT analysis:          "latlon"
 LVT output format:                      "netcdf"
 LVT output methodology:                 "2d gridspace"
-Analysis data sources:     "GL6 JULES data"  "MOD16A2"
+Analysis data sources:     "JULES data"  "MOD16A2"
 Experiment code:                        111
 Start mode:                             "coldstart"
 LVT restart output interval:            "1mo"
@@ -321,6 +321,9 @@ OptUE total number of selected parameters:              1
 Compute Innovation Distribution:            1
 Compute analysis gain:                      0
 Number of state variables in the DA update: 4
+
+# For the new JULES module from lvt7.2
+JULES data file: /disk/scratch/local/dvalters/netcdf_test/JULES_0.5-degree/JULES_WFDEI_global_dyn_ALL_timevar.nc
 
 GL6 JULES data directory: /disk/scratch/local/dvalters/netcdf_test/JULES_0.5-degree/JULES_WFDEI_global_dyn_ALL_timevar.nc
 #GL6 JULES data directory: /home/dvalters/Datasets/WFDEI_global_dyn.month.2d.gpp_gb.2000.1.nc 
