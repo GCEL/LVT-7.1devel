@@ -47,7 +47,7 @@ subroutine readJULESObs(source)
   character*100           :: filename
   logical                 :: file_exists
   integer                 :: nid, ios
-  integer                 :: smcid, timeid, tId, xId, yId,soilId
+  integer                 :: smcid, timeid, tId, xId, yId,soilId, gppid
   integer                 :: latid, lonid, stcId
   integer                 :: nx, ny
   real,  allocatable      :: smc_jules(:,:,:), lat(:,:), lon(:,:)
@@ -89,11 +89,11 @@ subroutine readJULESObs(source)
      ios = nf90_inquire_dimension(nid,yId, len=ny)
      call LVT_verify(ios, 'Error nf90_inquire_dimension: y')
 
-     ios = nf90_inq_dimid(nid,'soil', soilId)
-     call LVT_verify(ios, 'Error nf90_inq_dimid: soil')
+     !ios = nf90_inq_dimid(nid,'soil', soilId)
+     !call LVT_verify(ios, 'Error nf90_inq_dimid: soil')
 
-     nsoil = 1
-     ios = nf90_inquire_dimension(nid,soilId, len=nsoil)
+     !nsoil = 1
+     !ios = nf90_inquire_dimension(nid,soilId, len=nsoil)
      !        call LVT_verify(ios, 'Error nf90_inquire_dimension: soil')
 
      ios = nf90_inq_dimid(nid,'time',tId)
@@ -163,7 +163,13 @@ subroutine readJULESObs(source)
           start=(/1,1,1,tindex/), &
           count=(/nx,ny,nsoil,1/))
      call LVT_verify(ios, 'Error nf90_get_var: stcl')
+!GPP
+     ios = nf90_inq_varid(nid, 'gpp', gppid, &
+     call LVT_verify(ios, 'Error nf90_inq_varid: gpp')
 
+     ios = nf90_get_var(nid, gppid, gpp_jules)
+     call LVT_verify(ios, 'Error in nf90_get_var: gpp')
+!close file
      ios = nf90_close(nid)
      call LVT_verify(ios, 'Error in nf90_close')
 
