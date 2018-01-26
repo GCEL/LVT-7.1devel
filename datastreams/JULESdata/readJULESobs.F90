@@ -103,8 +103,13 @@ subroutine readJULESObs(source)
      call LVT_verify(ios, 'Error nf90_inquire_dimension: time')
 
      allocate(smc_jules(nx,ny,nsoil))
-     allocate(lat(nx,ny))
-     allocate(lon(nx,ny))
+     
+     ! Two dim lat/lon needs to be addressed  at some point
+     !allocate(lat(nx,ny))
+     !allocate(lon(nx,ny))
+     ! Single Dim lat/lon - DV TODO Check JULES convention     
+     allocate(lat(ny))
+     allocate(lon(nx))
      allocate(time_val(JULESobs(source)%ntimes))
      allocate(smc(LVT_rc%lnc, LVT_rc%lnr,nsoil))
 
