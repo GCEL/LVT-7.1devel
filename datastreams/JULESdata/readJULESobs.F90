@@ -183,49 +183,51 @@ subroutine readJULESObs(source)
      ios = nf90_close(nid)
      call LVT_verify(ios, 'Error in nf90_close')
 
-     !map to the LVT grid           
-     do c=1,nx
-        do r=1,ny
-           call latlon_to_ij(LVT_domain%lvtproj, lat(r), lon(c),&
-                col,row)
-           stn_col = nint(col)
-           stn_row = nint(row)
-! GPP
-           if(stn_col.ge.1.and.stn_col.le.LVT_rc%lnc.and.&
-                 stn_row.ge.1.and.stn_row.le.LVT_rc%lnr) then
-              gpp(stn_col,stn_row,:) = &
-                    gpp_jules(c,r,:)
-           endif
+     !map to the LVT grid
+     do t=1,JULES_obs(source)%ntimes         
+       do c=1,nx
+          do r=1,ny
+             call latlon_to_ij(LVT_domain%lvtproj, lat(r), lon(c),&
+                  col,row)
+             stn_col = nint(col)
+             stn_row = nint(row)
+  ! GPP
+             if(stn_col.ge.1.and.stn_col.le.LVT_rc%lnc.and.&
+                   stn_row.ge.1.and.stn_row.le.LVT_rc%lnr) then
+                gpp(stn_col,stn_row,t) = &
+                      gpp_jules(c,r,t)
+             endif
 
-!soil moisture
-!           if(stn_col.ge.1.and.stn_col.le.LVT_rc%lnc.and.&
-!                stn_row.ge.1.and.stn_row.le.LVT_rc%lnr) then 
-!              smc(stn_col,stn_row,:) = &
-!                   smc_jules(c,r,:)
-!           endif
-!soil temperature
-!           if(stn_col.ge.1.and.stn_col.le.LVT_rc%lnc.and.&
-!                stn_row.ge.1.and.stn_row.le.LVT_rc%lnr) then 
-!              stc(stn_col,stn_row,:) = &
-!                   stc_jules(c,r,:)
-!          endif
-        enddo
+  !soil moisture
+  !           if(stn_col.ge.1.and.stn_col.le.LVT_rc%lnc.and.&
+  !                stn_row.ge.1.and.stn_row.le.LVT_rc%lnr) then 
+  !              smc(stn_col,stn_row,:) = &
+  !                   smc_jules(c,r,:)
+  !           endif
+  !soil temperature
+  !           if(stn_col.ge.1.and.stn_col.le.LVT_rc%lnc.and.&
+  !                stn_row.ge.1.and.stn_row.le.LVT_rc%lnr) then 
+  !              stc(stn_col,stn_row,:) = &
+  !                   stc_jules(c,r,:)
+  !          endif
+          enddo
+       enddo
      enddo
 
      write(LVT_logunit,*) '[INFO] Finished reading JULES data '
 ! Copying jules_var to var_ip
 ! DV is this needed for gpp? gpp(lat, lon, ntimes)
-     do r=1, LVT_rc%lnr
-        do c=1, LVT_rc%lnc
-           smc_ip(c,r) = smc(c,r,1)
-        enddo
-     enddo
+!     do r=1, LVT_rc%lnr
+!        do c=1, LVT_rc%lnc
+!           smc_ip(c,r) = smc(c,r,1)
+!        enddo
+!     enddo
 
-     do r=1, LVT_rc%lnr
-        do c=1, LVT_rc%lnc
-           stc_ip(c,r) = stc(c,r,1)
-        enddo
-     enddo
+!     do r=1, LVT_rc%lnr
+!        do c=1, LVT_rc%lnc
+!           stc_ip(c,r) = stc(c,r,1)
+!        enddo
+!     enddo
 
      deallocate(smc_jules)
      deallocate(lat)
@@ -238,6 +240,7 @@ subroutine readJULESObs(source)
   else
      smc_ip = LVT_rc%udef
      stc_ip = LVT_rc%udef
+     
   endif
 #endif
 
