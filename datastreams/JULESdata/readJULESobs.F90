@@ -110,6 +110,10 @@ subroutine readJULESObs(source)
 
      allocate(stc_jules(nx,ny,nsoil))
      allocate(stc(LVT_rc%lnc, LVT_rc%lnr,nsoil))
+
+     !gpp
+     allocate(gpp(LVT_rc%lnc, LVT_rc%lnr,times))
+     allocate(gpp_jules(nx,ny,ntimes))
      !values
      ios = nf90_inq_varid(nid,'latitude',latid)
      call LVT_verify(ios, 'Error nf90_inq_varid: latitude')
