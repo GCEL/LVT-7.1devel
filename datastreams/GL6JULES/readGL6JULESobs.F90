@@ -136,7 +136,7 @@ subroutine readGL6JULESObs(source)
         !call LVT_verify(ios, 'Error nf90_get_var: latent_heat')
 
         ! DV - ingest GPP
-        ios = nf90_inq_varid(nid,'gpp', gppid)
+        ios = nf90_inq_varid(nid,'GPP', gppid)
         call LVT_verify(ios, 'Error nf90_inq_varid: gpp')
         
         ios = nf90_get_var(nid, gppid, gpp)
